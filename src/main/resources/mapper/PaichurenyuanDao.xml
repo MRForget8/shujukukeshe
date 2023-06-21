@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dao.PaichurenyuanDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.entity.PaichurenyuanEntity" id="paichurenyuanMap">
+        <result property="gonghao" column="gonghao"/>
+        <result property="xingming" column="xingming"/>
+        <result property="zhiwu" column="zhiwu"/>
+        <result property="paichushijian" column="paichushijian"/>
+        <result property="paichudidian" column="paichudidian"/>
+        <result property="paichushiyou" column="paichushiyou"/>
+    </resultMap>
+
+	<select id="selectListVO"
+		resultType="com.entity.vo.PaichurenyuanVO" >
+		SELECT * FROM paichurenyuan  paichurenyuan         
+        <where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+	
+	<select id="selectVO"
+		resultType="com.entity.vo.PaichurenyuanVO" >
+		SELECT  paichurenyuan.* FROM paichurenyuan  paichurenyuan 	
+ 		<where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+
+    <select id="selectListView"
+		resultType="com.entity.view.PaichurenyuanView" >
+
+		SELECT  paichurenyuan.* FROM paichurenyuan  paichurenyuan 	        
+        <where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+	
+	<select id="selectView"
+		resultType="com.entity.view.PaichurenyuanView" >
+		SELECT * FROM paichurenyuan  paichurenyuan <where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+	
+
+</mapper>
