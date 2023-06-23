@@ -14,6 +14,8 @@ import center from '@/views/center'
 import outbound from '@/views/outbound'
 import warehousing from '@/views/warehousing'
 import forwardinginfo from '@/views/forwardinginfo'
+import storageFeeEcharts from '@/views/storage-fee-echarts'
+import siteEcharts from '@/views/siteEcharts'
 
 
 //2.配置路由   注意：名字
@@ -61,18 +63,18 @@ const routes = [{
 	  component: forwardinginfo,
 	  meta: {icon:'', title:'forwardinginfo'}
 	}, 
-	// {
-	//   path: '/',
-	//   name: '堆存费可视化',
-	//   component: outbound,
-	//   meta: {icon:'', title:'outbound'}
-	// }, 
-	// {
-	//   path: '/',
-	//   name: '场地管理',
-	//   component: outbound,
-	//   meta: {icon:'', title:'outbound'}
-	// }
+	{
+	  path: '/storageFeeEcharts',
+	  name: '堆存费可视化',
+	  component: storageFeeEcharts,
+	  meta: {icon:'', title:'storageFeeEcharts'}
+	}, 
+	{
+	  path: '/siteEcharts',
+	  name: '场地管理可视化',
+	  component: siteEcharts,
+	  meta: {icon:'', title:'siteEcharts'}
+	}
     ]
   },
   

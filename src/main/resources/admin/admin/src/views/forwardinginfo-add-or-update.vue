@@ -25,13 +25,11 @@
         visible: false,
         dataForm: {
           id: 0,
-          
-forwardingCompany: '',
+          forwardingCompany: '',
           companyCode: ''
         },
         dataRule: {
-          
-forwardingCompany: [
+		      forwardingCompany: [
             { required: true, message: '货代公司不能为空', trigger: 'blur' }
           ],
           companyCode: [

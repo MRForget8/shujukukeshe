@@ -11,7 +11,12 @@
       <el-input v-model="dataForm.outboundNum" placeholder="出库件数"></el-input>
     </el-form-item>
     <el-form-item label="出库时间" prop="outboundDate">
-      <el-input v-model="dataForm.outboundDate" placeholder="出库时间"></el-input>
+		<el-date-picker
+		      v-model="dataForm.outboundDate"
+		      type="date"
+		      placeholder="选择出库时间" 
+			  value-format="yyyy-MM-dd">
+		</el-date-picker>
     </el-form-item>
     <el-form-item label="出库吨数" prop="outboundTonnage">
       <el-input v-model="dataForm.outboundTonnage" placeholder="出库吨数"></el-input>

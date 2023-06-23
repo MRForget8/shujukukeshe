@@ -2,12 +2,12 @@
   <div class="mod-config">
     <el-form :inline="true" :model="dataForm" @keyup.enter.native="getDataList()">
       <el-form-item>
-        <el-input v-model="dataForm.key" placeholder="参数名" clearable></el-input>
+        <el-input v-model="dataForm.key" placeholder="仓库编号" clearable></el-input>
       </el-form-item>
       <el-form-item>
         <el-button @click="getDataList()">查询</el-button>
-        <el-button v-if="isAuth('generator:outbound:save')" type="primary" @click="addOrUpdateHandle()">新增</el-button>
-        <el-button v-if="isAuth('generator:outbound:delete')" type="danger" @click="deleteHandle()" :disabled="dataListSelections.length <= 0">批量删除</el-button>
+        <el-button type="primary" @click="addOrUpdateHandle()">新增</el-button>
+        <el-button type="danger" @click="deleteHandle()" :disabled="dataListSelections.length <= 0">批量删除</el-button>
       </el-form-item>
     </el-form>
     <el-table
@@ -21,12 +21,6 @@
         header-align="center"
         align="center"
         width="50">
-      </el-table-column>
-      <el-table-column
-        prop="id"
-        header-align="center"
-        align="center"
-        label="">
       </el-table-column>
       <el-table-column
         prop="storeNumber"
@@ -62,7 +56,6 @@
         fixed="right"
         header-align="center"
         align="center"
-        width="150"
         label="操作">
         <template slot-scope="scope">
           <el-button type="text" size="small" @click="addOrUpdateHandle(scope.row.id)">修改</el-button>
@@ -104,7 +97,7 @@
     components: {
       AddOrUpdate
     },
-    activated () {
+    created () {
       this.getDataList()
     },
     methods: {
@@ -112,17 +105,17 @@
       getDataList () {
         this.dataListLoading = true
         this.$http({
-          url: this.$http.adornUrl('/generator/outbound/list'),
+          url: '/outbound/list',
           method: 'get',
-          params: this.$http.adornParams({
+          params: {
             'page': this.pageIndex,
             'limit': this.pageSize,
             'key': this.dataForm.key
-          })
+          }
         }).then(({data}) => {
           if (data && data.code === 0) {
             this.dataList = data.page.list
-            this.totalPage = data.page.totalCount
+            this.totalPage = data.page.total
           } else {
             this.dataList = []
             this.totalPage = 0
@@ -163,9 +156,9 @@
           type: 'warning'
         }).then(() => {
           this.$http({
-            url: this.$http.adornUrl('/generator/outbound/delete'),
+            url: '/outbound/delete',
             method: 'post',
-            data: this.$http.adornData(ids, false)
+            data: ids
           }).then(({data}) => {
             if (data && data.code === 0) {
               this.$message({

@@ -10,7 +10,7 @@ import router from '@/router/router-static.js';
 // 面包屑导航，注册为全局组件
 import BreadCrumbs from '@/components/common/BreadCrumbs'
 // 引入echart
-import echarts from 'echarts'
+import * as echarts from 'echarts'
 // 引入echart主题
 // import  '@/assets/js/echarts-theme-macarons.js'
 import 'echarts/theme/macarons.js'
@@ -52,6 +52,7 @@ VueAMap.initAMapApiLoader({
 Vue.prototype.$validate = validate
 Vue.prototype.$http = http // ajax请求方法
 Vue.prototype.$echarts = echarts
+console.log(Vue.prototype.$echarts)
 Vue.prototype.$base = base.get()
 Vue.prototype.$project = base.getProjectName()
 Vue.prototype.$storage = storage
