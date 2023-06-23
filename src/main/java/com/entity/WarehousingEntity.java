@@ -6,6 +6,7 @@ import java.util.Date;
 
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
+import com.baomidou.mybatisplus.enums.IdType;
 import lombok.Data;
 
 
@@ -15,7 +16,7 @@ public class WarehousingEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 
-	@TableId
+	@TableId(type = IdType.AUTO)
 	private Integer id;
 	/**
 	 * 货代公司id
@@ -24,7 +25,7 @@ public class WarehousingEntity implements Serializable {
 	/**
 	 * 车牌号
 	 */
-	private Integer carNumber;
+	private String carNumber;
 	/**
 	 * 入库件数
 	 */
@@ -32,10 +33,14 @@ public class WarehousingEntity implements Serializable {
 	/**
 	 * 入库时间
 	 */
-	private Date warehousingDate;
+	private String warehousingDate;
 	/**
 	 * 入库吨数
 	 */
-	private String warehousingTonnage;
+	private Double warehousingTonnage;
+	/**
+	 * 仓库编号
+	 */
+	private String storeNumber;
 
 }

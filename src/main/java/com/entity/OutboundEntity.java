@@ -6,6 +6,7 @@ import java.util.Date;
 
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
+import com.baomidou.mybatisplus.enums.IdType;
 import lombok.Data;
 
 
@@ -17,7 +18,7 @@ public class OutboundEntity implements Serializable {
 	/**
 	 * 
 	 */
-	@TableId
+	@TableId(type = IdType.AUTO)
 	private Integer id;
 	/**
 	 * 货代公司id
@@ -26,7 +27,7 @@ public class OutboundEntity implements Serializable {
 	/**
 	 * 仓库编号
 	 */
-	private Integer storeNumber;
+	private String storeNumber;
 	/**
 	 * 出库件数
 	 */
@@ -34,14 +35,14 @@ public class OutboundEntity implements Serializable {
 	/**
 	 * 出库时间
 	 */
-	private Date outboundDate;
+	private String outboundDate;
 	/**
 	 * 出库吨数
 	 */
-	private String outboundTonnage;
+	private Double outboundTonnage;
 	/**
 	 * 堆存费
 	 */
-	private String storageFee;
+	private Double storageFee;
 
 }
