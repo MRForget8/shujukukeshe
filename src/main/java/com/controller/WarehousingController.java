@@ -1,6 +1,7 @@
 package com.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import com.entity.WarehousingEntity;
@@ -74,6 +75,16 @@ public class WarehousingController {
 		warehousingService.deleteBatchIds(Arrays.asList(ids));
 
         return R.ok();
+    }
+
+    /**
+     * 堆存费可视化
+     */
+    @RequestMapping("/getStorageFeeGroupStoreNumber")
+    public R getStorageFeeGroupStoreNumber(@RequestParam(required = false) Map<String, Object> params){
+        Map<String, Double> warehousingEntityList = warehousingService.getStorageFeeGroupStoreNumber(params);
+
+        return R.ok().put("data",warehousingEntityList);
     }
 
 }
