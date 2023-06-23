@@ -9,8 +9,8 @@
           <el-menu-item index="0" @click="menuHandler('')"><i v-if="true" class="el-icon-menu el-icon-s-home" />首页</el-menu-item>
 		  <el-menu-item index="2" @click="menuHandler('warehousing')"><i v-if="true" class="el-icon-menu el-icon-s-home" />入库</el-menu-item>
 		  <el-menu-item index="3" @click="menuHandler('outbound')"><i v-if="true" class="el-icon-menu el-icon-s-home" />出库</el-menu-item>
-		  <el-menu-item index="4" @click="menuHandler('')"><i v-if="true" class="el-icon-menu el-icon-s-home" />堆存费可视化</el-menu-item>
-		  <el-menu-item index="5" @click="menuHandler('')"><i v-if="true" class="el-icon-menu el-icon-s-home" />场地管理</el-menu-item>
+		  <el-menu-item index="4" @click="menuHandler('storageFeeEcharts')"><i v-if="true" class="el-icon-menu el-icon-s-home" />堆存费可视化</el-menu-item>
+		  <el-menu-item index="5" @click="menuHandler('siteEcharts')"><i v-if="true" class="el-icon-menu el-icon-s-home" />场地管理</el-menu-item>
 		  <el-menu-item index="6" @click="menuHandler('forwardinginfo')"><i v-if="true" class="el-icon-menu el-icon-s-home" />货代公司列表</el-menu-item>
           <el-submenu :index="1+''">
             <template slot="title">
