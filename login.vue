@@ -2,9 +2,9 @@
   <div>
         <div class="container loginIn">
 
-      <div :class="3 == 1 ? 'left' : 3 == 2 ? 'left center' : 'left right'">
-        <el-form class="login-form" label-position="left" :label-width="3 == 3 || 3 == 2 ? '60px': '0px'">
-          <div class="title-container"><h3 class="title">港口集团仓库管理系统登录</h3></div>
+      <div>
+        <el-form class="login-form" style="margin: auto;margin-top: 20%;margin-right: 35%;" label-position="left" :label-width="3 == 3 || 3 == 2 ? '60px': '0px'">
+          <div class="title-container" style="padding-bottom: 20px;"><h3 class="title">港口堆存费管理系统登录</h3></div>
           <el-form-item :style='{"padding":"0","boxShadow":"0 0 6px rgba(0,0,0,0)","margin":"0 0 12px 0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0,0,0,0)","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}' :label="3 == 3 ? '用户名' : ''" :class="'style'+3">
             <span v-if="3 != 3" class="svg-container" style="
 			color:rgba(0, 30, 255, 1);
@@ -37,22 +37,7 @@
 			box-shadow:0 0 6px rgba(0,0,0,0);"><svg-icon icon-class="password" /></span>
             <el-input placeholder="请输入密码" name="password" type="password" v-model="rulesForm.password" />
           </el-form-item>
-          <el-form-item v-if="roles.length>1" label="角色" prop="loginInRole" class="role" style="display: flex;align-items: center;">
-            <el-radio
-              v-for="item in roles"
-              v-bind:key="item.roleName"
-              v-model="rulesForm.role"
-              :label="item.roleName"
-            >{{item.roleName}}</el-radio>
-          </el-form-item>
-          <el-form-item v-if="roles.length==1" label=" " prop="loginInRole" class="role" style="display: flex;align-items: center;">
-          </el-form-item>
           <el-button type="primary" @click="login()" class="loginInBt">{{'1' == '1' ? '登录' : 'login'}}</el-button>
-          <el-form-item class="setting">
-            <div class="register" @click="register('kehu')">注册客户</div>
-            <div class="register" @click="register('yuangong')">注册员工</div>
-            <!-- <div style="color:rgba(255, 255, 255, 1)" class="reset">修改密码</div> -->
-          </el-form-item>
         </el-form>
       </div>
 
@@ -126,24 +111,9 @@ export default {
          this.$message.error("请输入密码");
         return;
       }
-      if(this.roles.length>1) {
-          if (!this.rulesForm.role) {
-             this.$message.error("请选择角色");
-            return;
-          }
-          let menus = this.menus;
-          for (let i = 0; i < menus.length; i++) {
-            if (menus[i].roleName == this.rulesForm.role) {
-              this.tableName = menus[i].tableName;
-            }
-          }
-      } else {
-          this.tableName = this.roles[0].tableName;
-          this.rulesForm.role = this.roles[0].roleName;
-      }
-
+      
       this.$http({
-        url: `${this.tableName}/login?username=${this.rulesForm.username}&password=${this.rulesForm.password}`,
+        url: `users/login?username=${this.rulesForm.username}&password=${this.rulesForm.password}`,
         method: "post"
       }).then(({ data }) => {
         if (data && data.code === 0) {
@@ -203,8 +173,8 @@ export default {
   position: relative;
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: cover;
-      background-image: url(http://codegen.caihongy.cn/20201223/84334efb21024181a90ae1a05d9ff315.jpg);
+  //background-size: cover;
+  //background-image: url(d:\Work\School\数据库课设\02\admin\src\assets\img\bacc.jpg);
     
 
   .loginInBt {
@@ -281,6 +251,8 @@ export default {
 	  position: initial;
       justify-content: center;
       flex-direction: column;
+      margin: auto !important;
+      margin-top: 20% !important;
     }
 
     .title-container {

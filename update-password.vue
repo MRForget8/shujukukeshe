@@ -81,7 +81,7 @@ export default {
           } else if (this.user.password) {
             password = this.user.password;
           }
-          if (this.ruleForm.password != password) {
+          if (this.ruleForm.password = password) {
             this.$message.error("原密码错误");
             return;
           }
